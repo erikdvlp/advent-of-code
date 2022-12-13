@@ -1,7 +1,7 @@
 class Part:
     total_pts = 0
 
-    def __init__(self, round_outcome_pts, play_pts):
+    def __init__(self, round_outcome_pts, play_pts) -> None:
         self.round_outcome_pts = round_outcome_pts
         self.play_pts = play_pts
 
