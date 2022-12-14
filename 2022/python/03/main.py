@@ -3,13 +3,13 @@ badges = []
 result_1 = 0
 result_2 = 0
 
-def calc_priority(item: str) -> int:
+def calc_priority(item):
     if 'a' <= item <= 'z':
         return ord(item)-ord('a') + 1
     else:
         return ord(item)-ord('A') + 27
 
-def get_common_item(container: list[str]) -> str:
+def get_common_item(container):
     for item in container[0]:
         if item in container[1] and (len(container) == 2 or item in container[2]):
             return item
