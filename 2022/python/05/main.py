@@ -34,14 +34,14 @@ def get_moves_from_lines(move_lines):
         moves.append(tuple(map(int, [line[1], line[3], line[5]])))
     return moves
 
-def execute_moves(stacks, moves, from_top):
+def execute_moves(stacks, moves, crate_mover):
     for move in moves:
         num_boxes = move[0]
         from_stack = stacks[move[1]-1]
         to_stack = stacks[move[2]-1]
         index = len(from_stack)-num_boxes
         for _ in range(num_boxes):
-            if from_top:
+            if crate_mover == 'CM9000':
                 index = len(from_stack)-1
             box = from_stack.pop(index)
             to_stack.append(box)
@@ -62,8 +62,8 @@ with open('../../inputs/05.txt', 'r') as input_file:
         lines_to_process.append(line)
     moves = get_moves_from_lines(lines_to_process[2:])
 
-run = lambda from_top: get_tops_of_stacks(execute_moves(copy.deepcopy(stacks), moves, from_top))
-result_1 = run(True)
-result_2 = run(False)
+run = lambda crate_mover: get_tops_of_stacks(execute_moves(copy.deepcopy(stacks), moves, crate_mover))
+result_1 = run('CM9000')
+result_2 = run('CM9001')
 print(result_1)
 print(result_2)
