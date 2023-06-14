@@ -45,19 +45,15 @@ fn sum_inventories(inventories: Vec<Inventory>) -> Vec<Calories> {
 }
 
 /// Sums the first three calories given a vector of calories.
-fn sum_first_three_calories(calories: Vec<Calories>) -> Calories {
-    let mut first_three_calories_sum: Calories = 0;
-    for calorie in 0..=2 {
-        first_three_calories_sum += calories[calorie];
-    }
-    first_three_calories_sum
+fn sum_first_three_calories(calories: &Vec<Calories>) -> Calories {
+    calories[..=2].iter().sum()
 }
 
 fn main() {
     let input_file_lines = read_input_file();
     let inventories = lines_to_inventories(input_file_lines);
     let inventory_sums = sum_inventories(inventories);
+    let first_three_calories_sum = sum_first_three_calories(&inventory_sums);
     println!("Part 1 answer: {}", inventory_sums[0]);
-    let first_three_calories_sum = sum_first_three_calories(inventory_sums);
     println!("Part 2 answer: {}", first_three_calories_sum);
 }
