@@ -1,10 +1,10 @@
 cabal-version:      2.4
-name:               day01
+name:               day04
 version:            1.0.0
 
-executable haskell
+executable day03
     main-is:          Main.hs
-    other-modules:    Inventory
+    other-modules:    Assignment
     build-depends:    base ^>=4.16.4.0, split == 0.2.3.5
     hs-source-dirs:   app
     default-language: Haskell2010

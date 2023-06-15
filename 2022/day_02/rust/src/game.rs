@@ -1,6 +1,6 @@
 type Points = u32;
 
-enum Shape {
+pub enum Shape {
     Paper,
     Rock,
     Scissors,
