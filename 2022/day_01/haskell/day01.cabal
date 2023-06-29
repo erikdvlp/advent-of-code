@@ -2,7 +2,7 @@ cabal-version:      2.4
 name:               day01
 version:            1.0.0
 
-executable haskell
+executable day01
     main-is:          Main.hs
     other-modules:    Inventory
     build-depends:    base ^>=4.16.4.0, split == 0.2.3.5
