@@ -21,20 +21,13 @@ fn main() {
         .collect();
     let full_overlaps: &Vec<Overlap> = &assignments
         .iter()
-        .map(|a| get_overlap(a))
-        .filter(|o| match o {
-            Overlap::Full => true,
-            _ => false,
-        })
+        .map(get_overlap)
+        .filter(|o| matches!(o, Overlap::Full))
         .collect();
     let partial_overlaps: &Vec<Overlap> = &assignments
         .iter()
-        .map(|a| get_overlap(a))
-        .filter(|o| match o {
-            Overlap::Partial => true,
-            Overlap::Full => true,
-            _ => false,
-        })
+        .map(get_overlap)
+        .filter(|o| matches!(o, Overlap::Partial | Overlap::Full))
         .collect();
     println!("Part 1 answer: {}", full_overlaps.len());
     println!("Part 2 answer: {}", partial_overlaps.len());

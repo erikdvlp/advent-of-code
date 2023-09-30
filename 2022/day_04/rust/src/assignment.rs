@@ -8,17 +8,17 @@ pub enum Overlap {
 }
 
 /// Parses a given input file line and converts it into an assignment pair.
-pub fn line_to_assignment_pair(line: &String) -> AssignmentPair {
+pub fn line_to_assignment_pair(line: &str) -> AssignmentPair {
     let mut parts: Vec<Section> = Vec::new();
-    let assignments = line.split(",");
+    let assignments = line.split(',');
     for assignment in assignments {
-        let sections = assignment.split("-");
+        let sections = assignment.split('-');
         for section in sections {
             parts.push(section.parse::<Section>().unwrap());
         }
     }
     (
-        (*parts.get(0).unwrap(), *parts.get(1).unwrap()),
+        (*parts.first().unwrap(), *parts.get(1).unwrap()),
         (*parts.get(2).unwrap(), *parts.get(3).unwrap()),
     )
 }
@@ -27,10 +27,10 @@ pub fn line_to_assignment_pair(line: &String) -> AssignmentPair {
 pub fn get_overlap(assignment_pair: &AssignmentPair) -> Overlap {
     let ((w, x), (y, z)) = assignment_pair;
     if (w <= y && x >= z) || (w >= y && x <= z) {
-        return Overlap::Full;
+        Overlap::Full
     } else if (w <= y && y <= x) || (w <= z && z <= x) {
-        return Overlap::Partial;
+        Overlap::Partial
     } else {
-        return Overlap::None;
+        Overlap::None
     }
 }

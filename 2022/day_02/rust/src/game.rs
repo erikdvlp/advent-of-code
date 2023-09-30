@@ -106,7 +106,7 @@ pub fn get_round_points(round: Round) -> Points {
             outcome_to_points(&round_to_outcome(&round)) + play_to_points(y)
         }
         Round::RoundPart2(_, ref y) => {
-            outcome_to_points(&y) + play_to_points(&round_to_shape(round))
+            outcome_to_points(y) + play_to_points(&round_to_shape(round))
         }
     }
 }

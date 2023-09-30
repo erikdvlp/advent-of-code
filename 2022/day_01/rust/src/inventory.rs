@@ -6,7 +6,7 @@ pub fn lines_to_inventories(input_file_lines: Vec<String>) -> Vec<Inventory> {
     let mut inventories: Vec<Inventory> = Vec::new();
     let mut current_inventory: Inventory = Vec::new();
     for calories in input_file_lines {
-        if calories != "" {
+        if !calories.is_empty() {
             let calories: Calories = calories.parse().expect("Failed to parse line as integer");
             current_inventory.push(calories);
         } else {
@@ -33,6 +33,6 @@ pub fn sum_inventories(inventories: Vec<Inventory>) -> Vec<Calories> {
 }
 
 /// Sums the first three calories given a vector of calories.
-pub fn sum_first_three_calories(calories: &Vec<Calories>) -> Calories {
+pub fn sum_first_three_calories(calories: &[Calories]) -> Calories {
     calories[..=2].iter().sum()
 }

@@ -10,7 +10,7 @@ pub enum Mover {
 // Execute moves on the stacks.
 pub fn execute_moves(mut stacks: Vec<Stack>, moves: &Vec<Move>, mover: Mover) -> Vec<Stack> {
     for current_move in moves {
-        let (n, from, to) = current_move;
+        let (n, from, to): &Move = current_move;
         for index in 0..*n {
             let mut crate_index = 0;
             if let Mover::CM9001 = mover {

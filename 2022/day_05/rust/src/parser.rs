@@ -49,14 +49,14 @@ pub fn lines_to_moves(lines: &Vec<String>) -> Vec<Move> {
     let mut moves: Vec<Move> = Vec::new();
     for line in lines {
         if line.len() > 4 && &line[..4] == "move" {
-            let words: Vec<&str> = line.split(" ").collect();
+            let words: Vec<&str> = line.split(' ').collect();
             let mut numbers: Vec<usize> = Vec::new();
             for index in (1..words.len()).step_by(2) {
                 let number: usize = words.get(index).unwrap().parse().unwrap();
                 numbers.push(number);
             }
             let current_move: Move = (
-                *numbers.get(0).unwrap(),
+                *numbers.first().unwrap(),
                 *numbers.get(1).unwrap() - 1,
                 *numbers.get(2).unwrap() - 1,
             );

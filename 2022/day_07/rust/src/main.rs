@@ -1,9 +1,9 @@
-use parser::*;
+use command::*;
+use file_system::*;
 use std::fs;
-use supply_stacks::*;
 
-mod parser;
-mod supply_stacks;
+mod command;
+mod file_system;
 
 /// Reads problem input from file.
 fn read_input_file() -> Vec<String> {
@@ -17,12 +17,11 @@ fn read_input_file() -> Vec<String> {
 
 fn main() {
     let input_file_lines = read_input_file();
-    let stacks = lines_to_stacks(&input_file_lines);
-    let moves = lines_to_moves(&input_file_lines);
-    let stacks_1 = execute_moves(stacks.clone(), &moves, Mover::CM9000);
-    let stacks_2 = execute_moves(stacks, &moves, Mover::CM9001);
-    let result_1: Vec<Crate> = stacks_1.iter().map(|x| *x.first().unwrap()).collect();
-    let result_2: Vec<Crate> = stacks_2.iter().map(|x| *x.first().unwrap()).collect();
+    let mut all_nodes = process_commands(input_file_lines);
+    let root_dir_size = calc_dir_size(&mut all_nodes, 0);
+    let result_1 = sum_dirs_below_100k(&all_nodes);
     println!("Part 1 answer: {:?}", result_1);
+    let space_needed = 30000000 - (70000000 - root_dir_size);
+    let result_2 = dir_to_delete_size(&all_nodes, space_needed, root_dir_size);
     println!("Part 2 answer: {:?}", result_2);
 }
