@@ -7,7 +7,7 @@ import Inventory
 groupLines :: [String] -> [[String]]
 groupLines = splitOn [""]
 
-main :: IO()
+main :: IO ()
 main = do
     inputFile <- readFile "../input.txt"
     let topThreeInventories = getTopThreeInventories $ sumInventories $ linesToInventories $ groupLines $ lines inputFile

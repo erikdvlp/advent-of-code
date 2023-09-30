@@ -1,6 +1,6 @@
 module Items where
 
-import Data.Char (ord, isAsciiLower)
+import Data.Char (isAsciiLower, ord)
 import Data.List (intersect)
 
 type Item = Char

@@ -1,12 +1,12 @@
 module Parser where
 
-import Data.List ( isPrefixOf, transpose )
-import SupplyStacks ( Move, Stack )
+import Data.List (isPrefixOf, transpose)
+import SupplyStacks (Move, Stack)
 
 -- Parses input file lines for lines that contain crate data by row.
 getCrateLines :: [String] -> [String]
 getCrateLines [] = []
-getCrateLines (x:xs)
+getCrateLines (x : xs)
     | " 1" `isPrefixOf` x = []
     | otherwise = x : getCrateLines xs
 
@@ -30,6 +30,6 @@ filterMoveLines = filter $ isPrefixOf "move"
 -- Parses an input file line that contains move data into a move.
 moveLineToMove :: String -> Move
 moveLineToMove s = (head numbers, numbers !! 1, numbers !! 2)
-    where
-        parts = words s
-        numbers = map read [parts !! 1, parts !! 3, parts !! 5]
+  where
+    parts = words s
+    numbers = map read [parts !! 1, parts !! 3, parts !! 5]

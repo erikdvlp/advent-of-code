@@ -1,8 +1,8 @@
 module Main (main) where
 
-import Game ( getRoundPoints, lineToRound )
+import Game (getRoundPoints, lineToRound)
 
-main :: IO()
+main :: IO ()
 main = do
     inputFile <- readFile "../input.txt"
     let run problemPart = sum $ map (getRoundPoints . lineToRound problemPart) (lines inputFile)

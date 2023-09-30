@@ -1,8 +1,8 @@
 module Main (main) where
 
-import Assignment ( Overlap(Partial, Full), getOverlap, lineToAssignmentPair )
+import Assignment (Overlap (Full, Partial), getOverlap, lineToAssignmentPair)
 
-main :: IO()
+main :: IO ()
 main = do
     inputFile <- readFile "../input.txt"
     let overlaps = map (getOverlap . lineToAssignmentPair) (lines inputFile)

@@ -1,8 +1,8 @@
 module Command where
 
-import FileSystem
-import Data.List (isPrefixOf, find)
+import Data.List (find, isPrefixOf)
 import Data.List.Split (splitOn)
+import FileSystem
 
 type Command = String
 
@@ -18,27 +18,27 @@ processCommand (f, p) command
 -- Parses a given array of input file lines and runs each corresponding command.
 processCommands :: (FileNode, Path) -> [Command] -> (FileNode, Path)
 processCommands (f, p) [] = (f, p)
-processCommands (f, p) (x:xs) = processCommands (processCommand (f, p) x) xs
+processCommands (f, p) (x : xs) = processCommands (processCommand (f, p) x) xs
 
 -- Creates a file according to a given command.
 createFile :: Command -> FileNode
 createFile command = File name size
-    where
-        commandParts = splitOn [' '] command
-        size = read (head commandParts)
-        name = commandParts !! 1
+  where
+    commandParts = splitOn [' '] command
+    size = read (head commandParts)
+    name = commandParts !! 1
 
 -- Creates a directory according to a given command.
 createDirectory :: Command -> FileNode
 createDirectory command = Directory name 0 []
-    where
-        commandParts = splitOn [' '] command
-        name = commandParts !! 1
+  where
+    commandParts = splitOn [' '] command
+    name = commandParts !! 1
 
 -- Changes directory according to a given command.
 changeDirectory :: Command -> (FileNode, Path) -> Path
 changeDirectory "$ cd .." (f, p) = stepUp p
 changeDirectory command (f, p) = stepDown p f name
-    where
-        commandParts = splitOn [' '] command
-        name = commandParts !! 2
+  where
+    commandParts = splitOn [' '] command
+    name = commandParts !! 2

@@ -3,7 +3,7 @@ module Main (main) where
 import Parser
 import SupplyStacks
 
-main :: IO()
+main :: IO ()
 main = do
     inputFile <- readFile "../input.txt"
     let stacks = removeSpacesFromStacks $ rowToStacks $ map crateLineToRow $ getCrateLines $ lines inputFile
