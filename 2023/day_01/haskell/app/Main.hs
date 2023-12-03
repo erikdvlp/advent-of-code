@@ -2,7 +2,7 @@ module Main where
 
 import Data.Char (isDigit)
 
--- Replaces all string digits in a line with numerical digits.
+-- Replaces all string digits in a given input line with numerical digits.
 lineConvertStringDigits :: String -> String
 lineConvertStringDigits [] = []
 lineConvertStringDigits line
@@ -17,7 +17,7 @@ lineConvertStringDigits line
     | take 5 line == "eight" = '8' : lineConvertStringDigits (drop 1 line)
     | otherwise = head line : lineConvertStringDigits (drop 1 line)
 
--- Gets the calibration value from a line.
+-- Parses a given input file line and gets the calibration value.
 lineToCalibrationValue :: Maybe Char -> Maybe Char -> String -> Int
 lineToCalibrationValue Nothing Nothing [] = 0
 lineToCalibrationValue (Just first) (Just last) [] = read [first, last]
