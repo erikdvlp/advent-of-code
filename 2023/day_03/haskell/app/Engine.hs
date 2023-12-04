@@ -59,7 +59,7 @@ isAdjacentToAnySymbol (x : xs) num = isAdjacent (numX1 num) (numX2 num) (numY nu
 setIsPartNumber :: [Symbol] -> Number -> Number
 setIsPartNumber syms num = Number{numVal = numVal num, numX1 = numX1 num, numX2 = numX2 num, numY = numY num, isPart = isAdjacentToAnySymbol syms num}
 
--- Gets all numbers that are adjacent to a given symbol.
+-- Gets all numbers that are adjacent to a given symbol for part 2 of the problem.
 getNumbersAdjacentToSymbol :: [Number] -> Symbol -> [Number]
 getNumbersAdjacentToSymbol [] _ = []
 getNumbersAdjacentToSymbol (x : xs) sym =
@@ -67,7 +67,7 @@ getNumbersAdjacentToSymbol (x : xs) sym =
         then x : getNumbersAdjacentToSymbol xs sym
         else getNumbersAdjacentToSymbol xs sym
 
--- Gets the gear ratio of a given symbol; can be zero if the symbol is not a gear.
+-- Gets the gear ratio of a given symbol for part 2 of the problem; can be zero if the symbol is not a gear.
 getGearRatio :: [Number] -> Symbol -> Int
 getGearRatio nums sym
     | length adjacentNums == 2 = read (numVal $ head adjacentNums) * read (numVal $ adjacentNums !! 1)
