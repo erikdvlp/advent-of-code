@@ -50,16 +50,19 @@ getSymbolsInSchematic x y s = getSymbolsInRow x y (head s) ++ getSymbolsInSchema
 isAdjacent :: Int -> Int -> Int -> Int -> Int -> Bool
 isAdjacent aX1 aX2 aY bX bY = ((abs (aX1 - bX) <= 1) || (abs (aX2 - bX) <= 1)) && (abs (aY - bY) <= 1)
 
--- Determines whether a given number is adjacent to any symbol in a given list of symbols for part 1 of the problem.
+-- Determines whether a given number is adjacent to any symbol in a given list of symbols.
+-- Only used for part 1 of the problem.
 isAdjacentToAnySymbol :: [Symbol] -> Number -> Bool
 isAdjacentToAnySymbol [] _ = False
 isAdjacentToAnySymbol (x : xs) num = isAdjacent (numX1 num) (numX2 num) (numY num) (symX x) (symY x) || isAdjacentToAnySymbol xs num
 
--- Sets whether a given number is a part number by comparing it to a given list of symbols for part 1 of the problem.
+-- Sets whether a given number is a part number by comparing it to a given list of symbols.
+-- Only used for part 1 of the problem.
 setIsPartNumber :: [Symbol] -> Number -> Number
 setIsPartNumber syms num = Number{numVal = numVal num, numX1 = numX1 num, numX2 = numX2 num, numY = numY num, isPart = isAdjacentToAnySymbol syms num}
 
--- Gets all numbers that are adjacent to a given symbol for part 2 of the problem.
+-- Gets all numbers that are adjacent to a given symbol.
+-- Only used for part 2 of the problem.
 getNumbersAdjacentToSymbol :: [Number] -> Symbol -> [Number]
 getNumbersAdjacentToSymbol [] _ = []
 getNumbersAdjacentToSymbol (x : xs) sym =
@@ -67,7 +70,8 @@ getNumbersAdjacentToSymbol (x : xs) sym =
         then x : getNumbersAdjacentToSymbol xs sym
         else getNumbersAdjacentToSymbol xs sym
 
--- Gets the gear ratio of a given symbol for part 2 of the problem; can be zero if the symbol is not a gear.
+-- Gets the gear ratio of a given symbol; can be zero if the symbol is not a gear.
+-- Only used for part 2 of the problem.
 getGearRatio :: [Number] -> Symbol -> Int
 getGearRatio nums sym
     | length adjacentNums == 2 = read (numVal $ head adjacentNums) * read (numVal $ adjacentNums !! 1)

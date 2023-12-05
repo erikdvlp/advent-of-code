@@ -29,26 +29,31 @@ lineToGame line = Game{gameId = gameId, rounds = rounds}
     roundLines = splitOn "; " $ last lineParts
     rounds = map (parseRoundLine (0, 0, 0)) roundLines
 
--- Checks if a given round is possible given limited cubes for part 1 of the problem.
+-- Checks if a given round is possible given limited cubes.
+-- Only used for part 1 of the problem.
 isRoundPossible :: Red -> Green -> Blue -> CubeSet -> Bool
 isRoundPossible rMax gMax bMax (r, g, b) = (r <= rMax) && (g <= gMax) && (b <= bMax)
 
--- Checks if a given game is possible given limited cubes for part 1 of the problem.
+-- Checks if a given game is possible given limited cubes.
+-- Only used for part 1 of the problem.
 isGamePossible :: Red -> Green -> Blue -> Game -> Bool
 isGamePossible r g b game = all (isRoundPossible r g b) (rounds game)
 
--- Gets the value of a game, which is either equal to zero or the game's ID, depending on whether the game is possible, for part 1 of the problem.
+-- Gets the value of a game, which is either equal to zero or the game's ID, depending on whether the game is possible.
+-- Only used for part 1 of the problem.
 getValueOfGame :: Red -> Green -> Blue -> Game -> Int
 getValueOfGame r g b game =
     if isGamePossible r g b game
         then gameId game
         else 0
 
--- Gets the sum of the values of all possible games given limited cubes for part 1 of the problem.
+-- Gets the sum of the values of all possible games given limited cubes.
+-- Only used for part 1 of the problem.
 getPossibleGames :: Red -> Green -> Blue -> [Game] -> Int
 getPossibleGames r g b games = sum $ map (getValueOfGame r g b) games
 
--- Gets the minimum number of each cube required to play a game given a list of rounds for part 2 of the problem.
+-- Gets the minimum number of each cube required to play a game given a list of rounds.
+-- Only used for part 2 of the problem.
 getMinCubesForRounds :: CubeSet -> [CubeSet] -> CubeSet
 getMinCubesForRounds cubes [] = cubes
 getMinCubesForRounds (r, g, b) rounds = getMinCubesForRounds (rMax, gMax, bMax) (drop 1 rounds)
@@ -58,10 +63,12 @@ getMinCubesForRounds (r, g, b) rounds = getMinCubesForRounds (rMax, gMax, bMax) 
     gMax = max g gCurr
     bMax = max b bCurr
 
--- Gets the minimum number of each cube required to play a game given a list of games for part 2 of the problem.
+-- Gets the minimum number of each cube required to play a game given a list of games.
+-- Only used for part 2 of the problem.
 getMinCubesForGame :: [Game] -> [CubeSet]
 getMinCubesForGame = map (getMinCubesForRounds (0, 0, 0) . rounds)
 
--- Calculates the power of a set of cubes for part 2 of the problem.
+-- Calculates the power of a set of cubes.
+-- Only used for part 2 of the problem.
 calcPowerOfCubes :: CubeSet -> Int
 calcPowerOfCubes (r, g, b) = r * g * b
