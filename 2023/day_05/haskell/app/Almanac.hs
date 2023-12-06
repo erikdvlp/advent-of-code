@@ -45,7 +45,7 @@ getDestFromMap Part2 ((a, b, len) : xs) val =
         then val - a + b
         else getDestFromMap Part2 xs val
 
--- Gets the lowest location number from a given alamanac.
+-- Gets the lowest location number from a given almanac.
 -- Only used for part 1 of the problem.
 getMinLoc :: Almanac -> Int -> Int
 getMinLoc [] minLoc = minLoc

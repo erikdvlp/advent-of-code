@@ -1,0 +1,10 @@
+cabal-version:      2.4
+name:               day06
+version:            1.0.0
+
+executable day06
+    main-is:          Main.hs
+    other-modules:    Boats
+    build-depends:    base ^>=4.16.4.0
+    hs-source-dirs:   app
+    default-language: Haskell2010
