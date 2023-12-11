@@ -1,0 +1,10 @@
+cabal-version:      3.0
+name:               day10
+version:            1.0.0
+
+executable day10
+    main-is:          Main.hs
+    other-modules:    Grid, Pipes
+    build-depends:    base ^>=4.19.0.0, vector == 0.13.0.0
+    hs-source-dirs:   app
+    default-language: Haskell2010
