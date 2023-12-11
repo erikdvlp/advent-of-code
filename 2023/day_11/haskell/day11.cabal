@@ -1,10 +1,10 @@
 cabal-version:      3.0
-name:               day06
+name:               day11
 version:            1.0.0
 
-executable day06
+executable day11
     main-is:          Main.hs
-    other-modules:    Boats
+    other-modules:    Space
     build-depends:    base ^>=4.19.0.0
     hs-source-dirs:   app
     default-language: Haskell2010
