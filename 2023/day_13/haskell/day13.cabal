@@ -4,7 +4,7 @@ version:            1.0.0
 
 executable day13
     main-is:          Main.hs
-    other-modules:    Mirrors
+    other-modules:    Mirrors, Grid
     build-depends:    base ^>=4.19.0.0, vector == 0.13.0.0, split == 0.2.3.5
     hs-source-dirs:   app
     default-language: Haskell2010

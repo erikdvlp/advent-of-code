@@ -15,6 +15,7 @@ linesToMirrors lines = map linesToGrid chunks
     chunks = splitOn [""] lines
 
 -- Gets the number of characters that two given strings of equal length differ by.
+getStringDiff :: String -> String -> Int
 getStringDiff [] [] = 0
 getStringDiff (x : xs) (y : ys)
     | x == y = getStringDiff xs ys
