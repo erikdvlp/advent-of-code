@@ -21,7 +21,7 @@ calcCycleLength i tortoise (x : xs)
     | x == tortoise = i
     | otherwise = calcCycleLength (i + 1) tortoise xs
 
--- Calculates the starting index and length of a cycle using Floyd's cycle-finding algorithm.
+-- Calculates the starting position and length of a cycle using Floyd's cycle-finding algorithm.
 calcCycle :: (Eq a) => [a] -> (Int, Int)
 calcCycle patterns = (cycleStart, cycleLength)
   where

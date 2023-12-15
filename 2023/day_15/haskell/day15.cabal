@@ -1,0 +1,10 @@
+cabal-version:      3.0
+name:               day15
+version:            1.0.0
+
+executable day15
+    main-is:          Main.hs
+    other-modules:    Initialization
+    build-depends:    base ^>=4.19.0.0, split == 0.2.3.5, vector == 0.13.0.0
+    hs-source-dirs:   app
+    default-language: Haskell2010
