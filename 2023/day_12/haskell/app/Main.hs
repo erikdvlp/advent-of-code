@@ -8,5 +8,5 @@ main = do
     let rows = map lineToRow $ lines inputFile
     let result1 = sum $ map (backtrack []) rows
     print ("Part 1 result: " ++ show result1)
-    let result2 = sum $ map (backtrack []) $ map unfoldRow rows
+    let result2 = sum $ map (backtrack [] . unfoldRow) rows
     print ("Part 2 result: " ++ show result2)

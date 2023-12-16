@@ -28,9 +28,9 @@ isValidRow inGroup (springs@(x : xs), groups@(y : ys))
 -- Uses backtracking to generate all possible candidates and then checks if rows are valid.
 backtrack :: String -> Row -> Int
 backtrack trial ([], groups)
-    | isValidRow False ((reverse trial), groups) = 1
+    | isValidRow False (reverse trial, groups) = 1
     | otherwise = 0
-backtrack trial ((x : xs), groups)
+backtrack trial (x : xs, groups)
     | x == '?' = backtrack ('.' : trial) (xs, groups) + backtrack ('#' : trial) (xs, groups)
     | otherwise = backtrack (x : trial) (xs, groups)
 
