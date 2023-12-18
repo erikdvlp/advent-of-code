@@ -1,0 +1,10 @@
+cabal-version:      3.0
+name:               day16
+version:            1.0.0
+
+executable day16
+    main-is:          Main.hs
+    other-modules:    Beam, Grid
+    build-depends:    base ^>=4.19.0.0, vector == 0.13.0.0
+    hs-source-dirs:   app
+    default-language: Haskell2010
