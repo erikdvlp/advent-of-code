@@ -1,0 +1,10 @@
+cabal-version:      3.0
+name:               day18
+version:            1.0.0
+
+executable day18
+    main-is:          Main.hs
+    other-modules:    Lagoon
+    build-depends:    base ^>=4.19.0.0
+    hs-source-dirs:   app
+    default-language: Haskell2010
