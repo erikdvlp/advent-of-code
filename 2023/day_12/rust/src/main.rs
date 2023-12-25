@@ -20,7 +20,7 @@ fn main() {
         .iter()
         .map(|r| springs::calc_arrangements(&(r.0), &(r.1), 0, 0, 0, &mut HashMap::new()))
         .sum();
-    println!("Part 1 answer: {}", result_1);
+    println!("Part 1 answer: {result_1}");
     let unfolded_rows: Vec<springs::Row> = rows
         .iter()
         .map(|r| springs::unfold_row(r.clone()))
@@ -29,5 +29,5 @@ fn main() {
         .iter()
         .map(|r| springs::calc_arrangements(&(r.0), &(r.1), 0, 0, 0, &mut HashMap::new()))
         .sum();
-    println!("Part 2 answer: {}", result_2);
+    println!("Part 2 answer: {result_2}");
 }
